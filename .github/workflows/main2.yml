@@ -17,8 +17,8 @@ jobs:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
     - name: Install XRDP
       run: sudo apt install xrdp -y
-    - run: systemctl start xrdp
-    - run: adduser --disabled-password --gecos "" amon
-    - run: usermod -aG sudo amon
+    - run: sudo systemctl start xrdp
+    - run: sudo adduser --disabled-password --gecos "" amon
+    - run: sudo usermod -aG sudo amon
     - name: Create Tunnel
       run: ngrok tcp 3389
