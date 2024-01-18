@@ -1,4 +1,4 @@
-name: CI2
+name: Ubuntu
 
 on: [push, workflow_dispatch]
 
