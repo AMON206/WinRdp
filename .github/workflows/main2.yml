@@ -15,8 +15,9 @@ jobs:
       run: ngrok config add-authtoken $NGROK_AUTH_TOKEN
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
-    - name: Install XRDP
+    - name: Install XRDP & XFCE
       run: sudo apt install xrdp -y
+    - run: sudo apt install xubuntu-desktop -y
     - run: sudo systemctl start xrdp
     - run: sudo adduser --disabled-password --gecos "" amon
     - run: sudo usermod --password $(echo PassWord69! | openssl passwd -1 -stdin) amon
