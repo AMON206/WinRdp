@@ -21,5 +21,6 @@ jobs:
     - run: sudo adduser --disabled-password --gecos "" amon
     - run: sudo usermod --password $(echo PassWord69! | openssl passwd -1 -stdin) amon
     - run: sudo usermod -aG sudo amon
+    - run: sudo apt install nmap gobuster
     - name: Create Tunnel
       run: ngrok tcp 3389
