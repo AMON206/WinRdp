@@ -9,9 +9,9 @@ jobs:
 
     steps:
     - name: Download Ngrok
-      run: brew install ngrok/ngrok/ngrok
+      run: sudo brew install ngrok/ngrok/ngrok
     - name: Auth
-      run: ngrok config add-authtoken $NGROK_AUTH_TOKEN
+      run: sudo ngrok config add-authtoken $NGROK_AUTH_TOKEN
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
     - name: Enable RDP
