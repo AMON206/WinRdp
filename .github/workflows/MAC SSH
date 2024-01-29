@@ -1,0 +1,28 @@
+name: MacOs
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - name: Download Ngrok
+      run: brew install ngrok/ngrok/ngrok
+    - name: Auth
+      run: sudo ngrok config add-authtoken $NGROK_AUTH_TOKEN
+      env:
+        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+    - name: Enable RDP
+      run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate
+    - run: sudo dscl . -create /Users/amon
+    - run: sudo dscl . -create /Users/amon UserShell /bin/bash
+    - run: sudo dscl . -create /Users/amon RealName "AMON" 
+    - run: sudo dscl . -create /Users/amon UniqueID "510"
+    - run: sudo dscl . -create /Users/amon PrimaryGroupID 20
+    - run: sudo dscl . -create /Users/amon NFSHomeDirectory /Users/joeadmin
+    - run: sudo dscl . -passwd /Users/amon amon1234 
+    - run: sudo dscl . -append /Groups/admin GroupMembership amon
+    - name: Create Tunnel
+      run: sudo ngrok tcp 22
