@@ -18,7 +18,7 @@ jobs:
       run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate
     - run: sudo dscl . -create /Users/amon
     - run: sudo dscl . -create /Users/amon UserShell /bin/bash
-    - run: sudo scl . -create /Users/amon RealName "AMON" 
+    - run: sudo dscl . -create /Users/amon RealName "AMON" 
     - run: sudo dscl . -create /Users/amon UniqueID "510"
     - run: sudo dscl . -create /Users/amon PrimaryGroupID 20
     - run: sudo dscl . -create /Users/amon NFSHomeDirectory /Users/joeadmin
