@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - name: Download Ngrok
-      run: sudo brew install ngrok/ngrok/ngrok
+      run: brew install ngrok/ngrok/ngrok
     - name: Auth
       run: sudo ngrok config add-authtoken $NGROK_AUTH_TOKEN
       env:
