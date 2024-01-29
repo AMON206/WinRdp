@@ -1,4 +1,4 @@
-name: MacOs
+name: MacOs2
 
 on: [push, workflow_dispatch]
 
